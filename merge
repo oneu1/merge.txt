@@ -1,0 +1,29 @@
+function mergedArray = mergeSort(left,right)
+    mergedArray =[];
+    while length(left)>0 && length (right)>0
+
+        if left(1)<right(1)
+            mergedArray=[mergedArray,left(1)];
+            left=left(2:$);
+        else
+            mergedArray=[mergedArray,right(1)];
+            right=right(2:$);
+        end
+    end
+    mergedArray=[mergedArray,left,right];
+endfunction
+function sortedArray = mergedArray(arr)
+    if length(arr) <= 1 
+        sortedArray =arr;
+    else
+        middle = floor(length(arr)/2);
+        left = arr(1:middle);
+        right =arr(middle+1 : $);
+
+        sortedArray = mergeSort(mergedArray(left),mergedArray(right));
+    end
+endfunction
+arr= [5,2,1,4,3];
+sortedArray= mergedArray(arr);
+disp("Sorted Array in Increasing Order:");
+disp(sortedArray);
